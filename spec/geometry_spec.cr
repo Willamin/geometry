@@ -30,4 +30,17 @@ describe Geometry do
     b = Point.new(3, 3)
     assert Rectangle.new(a, b).perimeter == 8
   end
+
+  test "rectangle intersection" do
+    a = Rectangle.new(Point.new(1, 1), Point.new(3, 3))
+    b = Rectangle.new(Point.new(2, 2), Point.new(4, 4))
+    c = Rectangle.new(Point.new(5, 5), Point.new(6, 6))
+    assert a.intersects(b) == true
+    assert b.intersects(a) == true
+
+    assert a.intersects(c) == false
+    assert c.intersects(a) == false
+    assert b.intersects(c) == false
+    assert c.intersects(b) == false
+  end
 end

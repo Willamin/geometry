@@ -21,4 +21,11 @@ struct Geometry::Rectangle
   def perimeter
     width * 2 + height * 2
   end
+
+  def intersects(other : Rectangle) : Bool
+    return false if (self.top_left.x > (other.bottom_right.x) || other.top_left.x > (self.bottom_right.x))
+    return false if (self.top_left.y > (other.bottom_right.y) || other.top_left.y > (self.bottom_right.y))
+
+    true
+  end
 end
